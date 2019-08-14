@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Style CSS -->
+    <title>Vertical Grid Component</title>
+    <style>
+        .vertical-table {
+            position: relative;
+        }
+        .vertical-table >tbody { 
+            position: relative;
+        }
+        .vertical-table >tbody > tr > td:first-child{ 
+            height: inherit;
+            width: 300px;
+            background: #ccc;
+        }
+        .vertical-table >tbody > tr > td + td{ 
+            margin-left: 300px;
+        }
+        .fixed-side {
+            
+        }
+    </style>
+    
+</head>
+
+<body class="container pt-5">   
+        <button type="button" class="btn btn-primary mb-3" id="addNewColumn">Add Column</button>
+        <table class="table table-bordered vertical-table">
+                <tbody id="verticalTableBody">
+                    <tr>
+                        <td class="fixed-side">
+                            160cm lorem ipsum dolor sit amet consectur amet
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fixed-side">165cm</td>
+                    </tr>
+                    <tr>
+                        <td class="fixed-side">170cm</td>
+                    </tr>
+                    <tr>
+                        <td class="fixed-side">175cm</td>
+                    </tr>
+                    <tr>
+                        <td class="fixed-side">175cm</td>
+                    </tr>
+                    <tr>
+                        <td class="fixed-side">175cm</td>
+                    </tr>
+                </tbody>
+            </table>
+            <script> 
+            var colID = 1;
+            var verticalTableBody  = document.getElementById('verticalTableBody');
+
+                    function _addColumn(id){
+                        
+                        Array.from(verticalTableBody.getElementsByTagName('tr')).forEach(function(e,i){
+                            var td = document.createElement('td');
+                            td.classList.add(`col_${id}`);
+                            td.innerHTML = `Content for col_${id}`;
+
+                            e.appendChild(td);
+                        });
+                    }
+                    document.getElementById('addNewColumn').addEventListener('click', function(){
+                        colID++;
+                        _addColumn(colID);
+            
+                    }); 
+                    function init(){
+                        
+            
+                    }  
+                    init();
+                </script>
+</body>
+</html>
